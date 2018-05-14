@@ -1,9 +1,12 @@
-(function (global, $) {
+// adding ; at the begin we ensure that other js libraries will not have an impact at our code
+;(function (global, $) {
 
+    // 'new' an object
     let Greeter = function (firstName, lastName, language) {
         return new Greeter.init(firstName, lastName, language);
     };
 
+    // hidden within the scope of the IIFE and never directly accessible
     let supportedLangs = ['en', 'es'];
 
     let greetings = {
@@ -21,6 +24,7 @@
         es: 'Inició sessión'
     };
 
+    // prototype holds methods (to save memory space)
     Greeter.prototype = {
         fullName: function () {
             return this.firstName + ' ' + this.lastName;
@@ -70,10 +74,32 @@
             this.validate();
 
             return this
+        },
+
+        HTMLGreeting: function (selector, formal) {
+            if (!$) {
+                throw 'jQuery not loaded';
+            }
+
+            if (!selector) {
+                throw 'Missing jQuery selector';
+            }
+
+            let msg;
+            if (formal) {
+                msg = this.formalGreetings();
+            } else {
+                msg = this.greeting();
+            }
+
+            $(selector).html(msg);
+
+            return this;
         }
 
     };
 
+    // the actual object is created here, allowing us to 'new' an object without calling new
     Greeter.init = function (firstName, lastName, language) {
         let self = this;
         self.firstName = firstName || '';
@@ -82,8 +108,10 @@
         self.validate();
     };
 
+    // trick borrowed from jQuery so we don't have to use the 'new' keyword
     Greeter.init.prototype = Greeter.prototype;
 
+    // attach our Greeter to the global object
     global.Greeter = global.G$ = Greeter;
 
 }(window, jQuery));

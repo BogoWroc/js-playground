@@ -1,3 +1,7 @@
-var g = G$("Jan", "Kowalski");
+$('#login').click(function () {
+    let loginUser = G$("Jan", "Kowalski");
 
-g.greet().setLang('es').greet(true);
+    $('#logindiv').hide();
+
+    loginUser.setLang($('#lang').val()).HTMLGreeting('#greeting', true).log();
+});
