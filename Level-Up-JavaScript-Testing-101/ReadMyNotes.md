@@ -13,3 +13,7 @@ https://www.youtube.com/watch?v=gxCCXXcqJfw
 
 First install all required modules locally. All dependencies were defined in package.json
 Then set nodejs runner as it is at [picture](./run_configuration.png)
+
+### How to add additional library?
+
+[picture](add_additional_library.png)
