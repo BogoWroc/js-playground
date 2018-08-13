@@ -4,34 +4,45 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
-    state = {
+    state = {   // state is internal state of component. Word state belongs to React component.
         persons: [
-            {name: "Max", age: 29},
-            {name: "Anu", age: 40},
-            {name: "Kate", age: 21}
-        ]
+            {id: 'a1', name: "Max", age: 30},
+            {id: 'a2', name: "Anu", age: 40},
+            {id: 'a3', name: "Kate", age: 21}
+        ],
+        showPersons: false
     };
 
-    switchNameHandler = (name) => {
-        console.log("Was clicked!");
-        // DON'T DO THIS: this.state.persons[0].name="Maximilian";
+    namedChangedHandler = (event, id) => {
+
+        const personIndex = this.state.persons.findIndex(p => {
+            return p.id === id;
+        });
+
+        const person = {
+            ...this.state.persons[personIndex] // make a copy of person
+        };
+
+        person.name = event.target.value;
+
+        const persons = [...this.state.persons]; // make a copy of array
+        persons[personIndex] = person;
+
         this.setState({
-            persons: [
-                {name: name, age: 29},
-                {name: "Anu", age: 45},
-                {name: "Kate", age: 21}
-            ]
+            persons: persons
         })
     };
 
-    namedChangedHandler = (event) => {
-        this.setState({
-            persons: [
-                {name: "Maximilian", age: 29},
-                {name: event.target.value, age: 45},
-                {name: "Kate", age: 21}
-            ]
-        })
+    tooglePersonsHandler = () => {
+        const doseShow = this.state.showPersons;
+        this.setState({showPersons: !doseShow})
+    };
+
+    deletePersonHandler = (personIndex) => {
+        //const persons = this.state.persons.slice();
+        const persons = [...this.state.persons];
+        persons.splice(personIndex,1);
+        this.setState({persons:persons});
     };
 
     render() {
@@ -42,6 +53,28 @@ class App extends Component {
             padding: '8px',
             cursor: 'pointer'
         };
+
+        let persons = null;
+
+        if(this.state.showPersons) {
+            persons = (
+                <div>
+                    {
+                        this.state.persons.map(
+                            (person, index) => {
+                                return <Person
+                                    key={person.id}
+                                    name={person.name}
+                                    age={person.age}
+                                    click={() => this.deletePersonHandler(index)}
+                                    changed={(event) =>this.namedChangedHandler(event, person.id)}
+                                />
+                            }
+                        )
+                    }
+                </div>
+            );
+        }
 
         return (
             <div className="App">
@@ -54,19 +87,9 @@ class App extends Component {
                 </p>
                 <button
                     style={style}
-                    onClick={() => this.switchNameHandler("Maximilian")}>Test</button>
-                <Person
-                    name={this.state.persons[0].name}
-                    age={this.state.persons[0].age}
-                />
-                <Person name={this.state.persons[1].name}
-                        age={this.state.persons[1].age}
-                        click={this.switchNameHandler.bind(this, "Max!")}
-                        changed={this.namedChangedHandler}>Say hello!
-                </Person>
-                <Person name={this.state.persons[2].name}
-                        age={this.state.persons[2].age}
-                />
+                    onClick={this.tooglePersonsHandler}>Test
+                </button>
+                {persons}
             </div>
         );
     }
