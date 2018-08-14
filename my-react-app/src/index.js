@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 var root = (
     <div>
-        <App />
+        <App title="Yo React APP!!!"/>
         <SayHello/>
     </div>
 );
