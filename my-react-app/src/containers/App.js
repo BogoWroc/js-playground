@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from '../assets/logo.svg';
 import classes from './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 
 class App extends Component {
     state = {   // state is internal state of component. Word state belongs to React component.
