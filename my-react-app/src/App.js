@@ -41,13 +41,13 @@ class App extends Component {
     deletePersonHandler = (personIndex) => {
         //const persons = this.state.persons.slice();
         const persons = [...this.state.persons];
-        persons.splice(personIndex,1);
-        this.setState({persons:persons});
+        persons.splice(personIndex, 1);
+        this.setState({persons: persons});
     };
 
     render() {
         const style = {
-            backgroundColor: 'white',
+            backgroundColor: 'green',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
@@ -56,7 +56,7 @@ class App extends Component {
 
         let persons = null;
 
-        if(this.state.showPersons) {
+        if (this.state.showPersons) {
             persons = (
                 <div>
                     {
@@ -67,30 +67,41 @@ class App extends Component {
                                     name={person.name}
                                     age={person.age}
                                     click={() => this.deletePersonHandler(index)}
-                                    changed={(event) =>this.namedChangedHandler(event, person.id)}
+                                    changed={(event) => this.namedChangedHandler(event, person.id)}
                                 />
                             }
                         )
                     }
                 </div>
             );
+
+            style.backgroundColor = 'red';
+        }
+
+        const classes = [];
+        if (this.state.persons.length <= 2) {
+            classes.push('red');
+        }
+        if (this.state.persons.length <= 1) {
+            classes.push('bold');
         }
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Welcome to React :)</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-                <button
-                    style={style}
-                    onClick={this.tooglePersonsHandler}>Test
-                </button>
-                {persons}
-            </div>
+                <div className="App">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo"/>
+                        <h1 className="App-title">Welcome to React :)</h1>
+                    </header>
+                    <p className="App-intro">
+                        To get started, edit <code>src/App.js</code> and save to reload.
+                    </p>
+                    <p className={classes.join(' ')}> This is really working!</p>
+                    <button
+                        style={style}
+                        onClick={this.tooglePersonsHandler}>Toogle Persons
+                    </button>
+                    {persons}
+                </div>
         );
     }
 }
