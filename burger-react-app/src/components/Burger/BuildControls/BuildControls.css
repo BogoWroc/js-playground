@@ -8,3 +8,31 @@
     margin: auto;
     padding: 10px 0;
 }
+
+.BuildControls button {
+    display: inline;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    width: 150px;
+    border: 1px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+}
+
+.BuildControls .OrderButton {
+    background-color: green;
+    color: white;
+}
+
+
+.BuildControls .OrderButton:hover, .BuildControl .OrderButton:active {
+    background-color: #a1da16;
+    color: white;
+}
+
+.BuildControls .OrderButton:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
