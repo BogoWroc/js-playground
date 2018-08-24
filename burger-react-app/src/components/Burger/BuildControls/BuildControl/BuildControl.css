@@ -37,6 +37,12 @@
     color: white;
 }
 
+.BuildControl .Less:disabled {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+}
+
 .BuildControl .More:hover, .BuildControl .More:active {
     background-color: #8f7f33;
     color: white;
