@@ -36,3 +36,8 @@
     background-color: #DAA972;
     color: white;
 }
+
+.BuildControl .More:hover, .BuildControl .More:active {
+    background-color: #8f7f33;
+    color: white;
+}
