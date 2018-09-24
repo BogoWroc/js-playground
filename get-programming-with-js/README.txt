@@ -1,0 +1,71 @@
+1. Create Node project
+
+npm init -y
+
+2. Install Babel
+
+npm install babel-cli --save-dev
+
+3. Configure Babel
+
+Babel uses a special file called .babelrc for its configuration. You must put this file in the project’s root and the contents of the file must be valid JSON. 
+To specify that you want Babel to transpile all ES2015 features, you can use the ES2015 preset. Edit the .babelrc file so its contents are   
+    {  "presets": ["es2015"]}            
+
+Now that you’ve told Babel to use the ES2015 preset, you must also install it:                  
+
+$ npm install babel-preset-es2015 --save-dev            
+
+You should now be ready to transpile some ES6 code!
+
+4. To transpile code execute
+
+babel src -d dist
+
+5. Additional Babel configuration
+{
+	"presets": ["es2015", "stage-0"],
+	"plugins": ["transform-decorators-legacy"],
+	"sourceMaps": "inline"
+}
+
+In above configuration, you’re using the ES2015 and stage-0 presets to include all of ES2015 and all of the existing proposed features. 
+You also need to include the transform-decorators-legacy plugin in order to transpile decorators. 
+And finally you tell Babel to include inline source maps to make debugging easier. Now in order for Babel to use those plugins and presets, you need to install them:
+$ npm install babel-preset-es2015 --save-dev
+$ npm install babel-preset-stage-0 --save-dev
+$ npm install babel-plugin-transform-decorators-legacy --save-dev
+
+6. Set up Babel as NPM script
+
+"scripts": {  
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"babel": "babel src –d dist",
+},
+
+$ npm run babel
+
+7. ES6 Modules
+
+Broswerify is a tool that lets you define modules, the same way Node.js does during development, and then bundle them into a single file.
+Browserify operates on an entry point, your main JavaScript file, and analyzes what scripts are imported. It then runs on all those scripts as well, eventually building a tree of all the dependencies that are needed. Browserify then generates a single JavaScript file with all the required modules bundled into it while maintaining their proper scoping and namespacing. This bundled JavaScript file can then be included in a webpage on the frontend. 
+
+Alternatives: webpack or rollup
+
+a). Install Browserify
+$ npm install browserify --global
+
+b). Install babelify
+$ npm install --save-dev babelify@8
+or
+$ npm install babelify --save-dev
+
+c). Boundle all scripts in one file
+$ browserify src/index.js --transform babelify --outfile dist/bundle.js--debug
+
+d). Run module
+
+$ node dist/bundle.js
+
+
+
