@@ -74,5 +74,21 @@ d). Run module
 
 $ node dist/bundle.js
 
+8. Intellij
+a). Configure FilesWatcher
+https://hackernoon.com/quickstart-guide-to-using-es6-with-babel-node-and-intellij-a83670afbc49
+
+b). Using ES6 in Node.js
+https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/
+
+When you’re developing a Node.js application in ES6, the best way to run and test it is using babel-register.
+
+    Make sure you have babel-cli (babel-register is installed as it’s dependency) properly installed in your project.
+    In your Node.js run/debug configuration in the Node parameters field add: -r babel-register. Don’t forget to specify the path to the JavaScript file you’d like to run.
+    Save configuration and hit run or debug.
+
+Alternatively (but we would recommend babel-register) , you can use babel-node (which is also a part of the babel-cli module). To use it, you need to specify the path to the babel-node executable (in the .bin folder on macOS, .cmd or .exe file on Windows) in your node_modules folder in the Node interpreter field in the Node.js run/debug configuration.
+
+
 
 
