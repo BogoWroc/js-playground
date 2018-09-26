@@ -1,5 +1,6 @@
 get-programming-with-js/node_modules
 get-programming-with-js/dist
+get-programming-with-js/coverage
 
 /node_modules
 bundle.js

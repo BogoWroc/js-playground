@@ -90,6 +90,8 @@ When you’re developing a Node.js application in ES6, the best way to run and t
 
 Alternatively (but we would recommend babel-register) , you can use babel-node (which is also a part of the babel-cli module). To use it, you need to specify the path to the babel-node executable (in the .bin folder on macOS, .cmd or .exe file on Windows) in your node_modules folder in the Node interpreter field in the Node.js run/debug configuration.
 
+c). Add library syntax for 'jest' library
 
+Settings -> Languages & Frameworks -> JavaScript -> Libraries (Download ... jest)
 
 
