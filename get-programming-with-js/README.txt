@@ -77,6 +77,7 @@ $ node dist/bundle.js
 8. Intellij
 a). Configure FilesWatcher
 https://hackernoon.com/quickstart-guide-to-using-es6-with-babel-node-and-intellij-a83670afbc49
+To support class modifier install transform-class-properties and add arg in file watcher: --plugins transform-class-properties
 
 b). Using ES6 in Node.js
 https://blog.jetbrains.com/webstorm/2015/05/ecmascript-6-in-webstorm-transpiling/
