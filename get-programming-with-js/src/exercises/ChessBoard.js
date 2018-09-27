@@ -35,7 +35,7 @@ function createBoardRow(position, size) {
 }
 
 function isOddRow(position) {
-    return position % 2 == 0;
+    return position % 2 === 0;
 }
 
 function fillBoardRow(generateChar, size) {
