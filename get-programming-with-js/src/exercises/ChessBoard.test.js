@@ -1,4 +1,4 @@
-import createChessBoard, {createAddChessBoardRow, createOddChessBoardRow} from "./ChessBoard";
+import createChessBoard, {createEvenChessBoardRow, createOddChessBoardRow} from "./ChessBoard";
 import * as chai from 'chai';
 
 describe("ChessBoard",()=>{
@@ -30,11 +30,11 @@ describe("ChessBoard",()=>{
         chai.expect(createOddChessBoardRow(8)).to.be.equal('# # # # ');
     });
 
-    it("should create add chess board row in N size",() =>{
-        chai.expect(createAddChessBoardRow(0)).to.be.equal('');
-        chai.expect(createAddChessBoardRow(1)).to.be.equal(' ');
-        chai.expect(createAddChessBoardRow(2)).to.be.equal(' #');
-        chai.expect(createAddChessBoardRow(3)).to.be.equal(' # ');
-        chai.expect(createAddChessBoardRow(8)).to.be.equal(' # # # #');
+    it("should create even chess board row in N size",() =>{
+        chai.expect(createEvenChessBoardRow(0)).to.be.equal('');
+        chai.expect(createEvenChessBoardRow(1)).to.be.equal(' ');
+        chai.expect(createEvenChessBoardRow(2)).to.be.equal(' #');
+        chai.expect(createEvenChessBoardRow(3)).to.be.equal(' # ');
+        chai.expect(createEvenChessBoardRow(8)).to.be.equal(' # # # #');
     });
 });

@@ -20,7 +20,7 @@ export function createOddChessBoardRow(size) {
     return fillBoardRow(generateChar, size);
 }
 
-export function createAddChessBoardRow(size) {
+export function createEvenChessBoardRow(size) {
 
     function generateChar(position) {
         return (isOddRow(position)) ? ' ' : '#';
@@ -31,7 +31,7 @@ export function createAddChessBoardRow(size) {
 
 
 function createBoardRow(position, size) {
-    return (isOddRow(position)) ? createOddChessBoardRow(size) : createAddChessBoardRow(size);
+    return (isOddRow(position)) ? createOddChessBoardRow(size) : createEvenChessBoardRow(size);
 }
 
 function isOddRow(position) {
