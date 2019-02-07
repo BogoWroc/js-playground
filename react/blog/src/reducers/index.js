@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux';
+import postsReducers from './postsReducers';
 
 
 
 export default combineReducers({
-    dummyReducer: () => 'Dummy reducer. Remove me later!'
+   posts: postsReducers
 });
 
