@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import jsonPlaceHolder from '../apis/jsonPlaceholder';
 
+// Thunk middleware always pass two arguments dispatch and getState function.
+// Using thunk we can return simple action or function!
 export const fetchPostsAndUsers = () => async (dispatch, getState )=>{
     await dispatch(fetchPosts());
 
