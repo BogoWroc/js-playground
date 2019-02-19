@@ -60,4 +60,7 @@ export const deleteStream = (id) => async dispatch => {
         type: DELETE_STREAM,
         payload: id
     });
+
+    //navigate user to main page
+    history.push('/');
 };
