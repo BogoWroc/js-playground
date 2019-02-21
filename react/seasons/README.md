@@ -1,3 +1,8 @@
+EXECUTE COMMAND: npm install --save react@next react-dom@next
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
