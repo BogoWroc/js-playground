@@ -3,6 +3,7 @@ get-programming-with-js/dist
 get-programming-with-js/coverage
 
 react/streams/api/node_modules
+webpack/js_modules/node_modules
 
 /node_modules
 bundle.js
