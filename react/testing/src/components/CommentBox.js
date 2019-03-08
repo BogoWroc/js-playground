@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {saveComment, fetchComments} from 'actions';
+import {fetchComments, saveComment, typeComment} from 'actions';
 
 class CommentBox extends Component {
 
-    state = {comment: ''};
-
     handleChange = event => {
-        this.setState({comment: event.target.value})
+        this.props.typeComment(event.target.value);
     };
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.saveComment(this.state.comment);
-        this.setState({comment:''})
+        this.props.saveComment(this.props.textValue);
+        this.props.typeComment('');
     };
 
     render() {
@@ -21,7 +19,7 @@ class CommentBox extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <h4>Add a Comment</h4>
-                    <textarea onChange={this.handleChange} value={this.state.comment}></textarea>
+                    <textarea onChange={this.handleChange} value={this.props.textValue}></textarea>
                     <div>
                         <button>Submit Comment</button>
                     </div>
@@ -33,5 +31,8 @@ class CommentBox extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {textValue: state.commentBox}
+};
 
-export default connect(null, {saveComment, fetchComments})(CommentBox);
+export default connect(mapStateToProps, {saveComment, fetchComments, typeComment})(CommentBox);

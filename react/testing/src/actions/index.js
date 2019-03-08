@@ -1,4 +1,4 @@
-import {FETCH_COMMENTS, SAVE_COMMENT} from 'actions/types';
+import {FETCH_COMMENTS, SAVE_COMMENT, TYPE_COMMENT} from 'actions/types';
 import axios from 'axios';
 
 export function saveComment(comment) {
@@ -15,4 +15,12 @@ export function fetchComments() {
         type: FETCH_COMMENTS,
         payload: response
     }
+}
+
+
+export function typeComment(letter) {
+    return {
+        type: TYPE_COMMENT,
+        payload: letter
+    };
 }
