@@ -65,3 +65,4 @@ console.log("Invoke")
 console.log(c4.summary());
 console.log(c4.publish());
 
+console.log(c3);
